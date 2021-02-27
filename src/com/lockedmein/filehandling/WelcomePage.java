@@ -20,9 +20,7 @@ public class WelcomePage {
 				+ "\n\tSelect 1 for Listing the Files present in the File List"
 				+ "\n\tSelect 2 for Adding a file in the File List"
 				+ "\n\tSelect 3 for Searching file with the matched name from the File List"
-				+ "\n\tSelect 4 for Deleting file with the matched name from the File List\n"
-				//+ "\n\tSelect 4 for Reading file with the matched name from the File List"
-				);
+				+ "\n\tSelect 4 for Deleting file with the matched name from the File List\n");
 		
 		sc = new Scanner(System.in);
 		System.out.print("Please select which operation you would like to perform: ");
@@ -60,15 +58,8 @@ public class WelcomePage {
 				break;
 				
 			case 2:
-				System.out.print("\nPlease insert the file name which you want to create for the vault: ");
-				String fileName = sc.next();
 				
-				if(!fileName.contains(".txt"))
-					System.out.println("Invalid signature found for File creation. "
-							+ "Please create file with correct extension");
-				else
-					new CreateFileToTheVault().createFile(fileName);
-
+				new CreateFileToTheVault().showOptionWizard();
 				check = setChoice();
 				if(check)
 					main(null);
@@ -76,6 +67,7 @@ public class WelcomePage {
 					System.out.println("Thanks for using the application. Hope to see you soon!");
 					System.exit(0);
 				}
+				break;
 				
 			case 3:
 				System.out.print("Please enter the File you want to search for its' presence: ");
@@ -93,6 +85,27 @@ public class WelcomePage {
 					System.out.println("Thanks for using the application. Hope to see you soon!");
 					System.exit(0);
 				}
+				break;
+				
+			case 4:
+				
+				System.out.print("\nPlease insert the file name which you want to delete from the vault: ");
+				String fileToDelete = sc.next();
+				
+				if(!fileToDelete.contains(".txt"))
+					System.out.println("Invalid signature found for File deletion. "
+							+ "Please mention file with correct extension");
+				else
+					new DeleteFile().deleteFileFromTheVault(fileToDelete);
+
+				check = setChoice();
+				if(check)
+					main(null);
+				else {
+					System.out.println("Thanks for using the application. Hope to see you soon!");
+					System.exit(0);
+				}
+				break;
 			
 			default:
 				System.out.println("Doing nothing here");
