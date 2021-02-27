@@ -42,9 +42,9 @@ public class ListExistingFiles {
 				System.out.print("\nPlease enter the file extension type which you want to show:");
 				String extension = sc.next();
 				if(extension.startsWith("."))
-					filesToReturn = this.showListOfSpecificFiles(extension);
+					filesToReturn = this.showListOfAllFiles(extension);
 				else
-					filesToReturn = this.showListOfSpecificFiles("." + extension);
+					filesToReturn = this.showListOfAllFiles("." + extension);
 				break;
 			
 			default:
@@ -53,6 +53,11 @@ public class ListExistingFiles {
 				break;
 		}
 		return filesToReturn;
+	}
+	
+	public List<String> showAllFiles(){
+		
+		return this.showListOfAllFiles();
 	}
 	
 	/*	This function is responsible to get the root directory of the
@@ -69,7 +74,7 @@ public class ListExistingFiles {
 		return fileList;
 	}
 	
-	private List<String> showListOfSpecificFiles(String extension){
+	private List<String> showListOfAllFiles(String extension){
 		
 		Path first = Paths.get("");
 		String basePath = first.toAbsolutePath().toString();

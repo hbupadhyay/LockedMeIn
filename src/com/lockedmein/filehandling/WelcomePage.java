@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class WelcomePage {
 	
 	private static Scanner sc;
-	private static String choiceRegEx = "[0-9]";
 
 	public WelcomePage() {
 		// TODO Auto-generated constructor stub
@@ -20,7 +19,8 @@ public class WelcomePage {
 		System.out.println("\nLockedMeIn is a prototyped project based on the Comman-Line interface with features such as:\n"
 				+ "\n\tSelect 1 for Listing the Files present in the File List"
 				+ "\n\tSelect 2 for Adding a file in the File List"
-				+ "\n\tSelect 3 for Deleting file with the matched name from the File List\n"
+				+ "\n\tSelect 3 for Searching file with the matched name from the File List"
+				+ "\n\tSelect 4 for Deleting file with the matched name from the File List\n"
 				//+ "\n\tSelect 4 for Reading file with the matched name from the File List"
 				);
 		
@@ -40,10 +40,23 @@ public class WelcomePage {
 		
 			case 1:
 				System.out.println("\nWelcome to the File Listing wizard!\n");
-				new WelcomePage().listFiles();
+				List<String> fileList = new ListExistingFiles().getListType();
+				//System.out.println("Files currently present in the directory are " + fileList.toString());
+				if(fileList.size() == 0)
+					System.out.println("Currently No Files are present in the directory.");
+				else {
+					
+					for(String file : fileList)
+						System.out.println(file);
+				}
+				
 				boolean check = setChoice();
 				if(check)
 					main(null);
+				else {
+					System.out.println("Thanks for using the application. Hope to see you soon!");
+					System.exit(0);
+				}
 				break;
 				
 			case 2:
@@ -56,15 +69,30 @@ public class WelcomePage {
 				else
 					new CreateFileToTheVault().createFile(fileName);
 
-				new WelcomePage().listFiles();
+				check = setChoice();
+				if(check)
+					main(null);
+				else {
+					System.out.println("Thanks for using the application. Hope to see you soon!");
+					System.exit(0);
+				}
+				
+			case 3:
+				System.out.print("Please enter the File you want to search for its' presence: ");
+				String fileToCheck = sc.next();
+				boolean checkPresence = new SearchForFiles().searchFile(fileToCheck);
+				if(checkPresence)
+					System.out.println("File " + fileToCheck + " is present in the Files Directory");
+				else
+					System.out.println("File " + fileToCheck + " is not present in the Files Directory");
 				
 				check = setChoice();
 				if(check)
 					main(null);
-				break;
-				
-			case 3:
-				break;
+				else {
+					System.out.println("Thanks for using the application. Hope to see you soon!");
+					System.exit(0);
+				}
 			
 			default:
 				System.out.println("Doing nothing here");
@@ -82,15 +110,6 @@ public class WelcomePage {
 			return true;
 		else
 			return false;
-	}
-	
-	private void listFiles(){
-		
-		List<String> fileList = new ListExistingFiles().getListType();
-		//System.out.println("Files currently present in the directory are " + fileList.toString());
-		
-		for(String file : fileList)
-			System.out.println(file);
 	}
 
 }
