@@ -1,8 +1,7 @@
 package com.lockedmein.filehandling;
 
+import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class WelcomePage {
 	
@@ -21,23 +20,15 @@ public class WelcomePage {
 		System.out.println("\nLockedMeIn is a prototyped project based on the Comman-Line interface with features such as:\n"
 				+ "\n\tSelect 1 for Listing the Files present in the File List"
 				+ "\n\tSelect 2 for Adding a file in the File List"
-				+ "\n\tSelect 3 for Deleting file with the matched name from the File List"
-				+ "\n\tSelect 4 for Reading file with the matched name from the File List"
-				+ "\n\tSelect 5 for Going back to the main Menu\n");
+				+ "\n\tSelect 3 for Deleting file with the matched name from the File List\n"
+				//+ "\n\tSelect 4 for Reading file with the matched name from the File List"
+				);
 		
 		sc = new Scanner(System.in);
 		System.out.print("Please select which operation you would like to perform: ");
 		String choiceTemp = sc.next();
-		Pattern choicePattern = Pattern.compile(choiceRegEx);
-		Matcher matchPattern = choicePattern.matcher(choiceTemp);
-		if(matchPattern.find()) {
-			int choice = Integer.parseInt(choiceTemp);
-			choiceSelection(choice);
-		}
-		else {
-			int choice = -1;
-			choiceSelection(choice);
-		}
+		int getChoice = new RegExUtil().returnChoiceValue(choiceTemp);
+		choiceSelection(getChoice);
 		
 	}
 	
@@ -48,14 +39,33 @@ public class WelcomePage {
 		switch(choice) {
 		
 			case 1:
-				System.out.println("Hello from the choice 1");
+				System.out.println("\nWelcome to the File Listing wizard!\n");
+				new WelcomePage().listFiles();
 				boolean check = setChoice();
 				if(check)
 					main(null);
 				break;
+				
 			case 2:
-				System.out.println("Hello from the choice 2");
+				System.out.print("\nPlease insert the file name which you want to create for the vault: ");
+				String fileName = sc.next();
+				
+				if(!fileName.contains(".txt"))
+					System.out.println("Invalid signature found for File creation. "
+							+ "Please create file with correct extension");
+				else
+					new CreateFileToTheVault().createFile(fileName);
+
+				new WelcomePage().listFiles();
+				
+				check = setChoice();
+				if(check)
+					main(null);
 				break;
+				
+			case 3:
+				break;
+			
 			default:
 				System.out.println("Doing nothing here");
 				break;
@@ -72,6 +82,15 @@ public class WelcomePage {
 			return true;
 		else
 			return false;
+	}
+	
+	private void listFiles(){
+		
+		List<String> fileList = new ListExistingFiles().getListType();
+		//System.out.println("Files currently present in the directory are " + fileList.toString());
+		
+		for(String file : fileList)
+			System.out.println(file);
 	}
 
 }
