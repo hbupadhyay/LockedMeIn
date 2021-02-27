@@ -70,13 +70,8 @@ public class WelcomePage {
 				break;
 				
 			case 3:
-				System.out.print("Please enter the File you want to search for its' presence: ");
-				String fileToCheck = sc.next();
-				boolean checkPresence = new SearchForFiles().searchFile(fileToCheck);
-				if(checkPresence)
-					System.out.println("File " + fileToCheck + " is present in the Files Directory");
-				else
-					System.out.println("File " + fileToCheck + " is not present in the Files Directory");
+				
+				new SearchForFiles().showOptionWizard();
 				
 				check = setChoice();
 				if(check)
@@ -89,14 +84,7 @@ public class WelcomePage {
 				
 			case 4:
 				
-				System.out.print("\nPlease insert the file name which you want to delete from the vault: ");
-				String fileToDelete = sc.next();
-				
-				if(!fileToDelete.contains(".txt"))
-					System.out.println("Invalid signature found for File deletion. "
-							+ "Please mention file with correct extension");
-				else
-					new DeleteFile().deleteFileFromTheVault(fileToDelete);
+				new DeleteFile().showOptionWizard();
 
 				check = setChoice();
 				if(check)
