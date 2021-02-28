@@ -19,4 +19,14 @@ Java Project for storing and retrieving the files present
   * After completion of each operations user will be asked if he/she would like to continue with the application.
   * If user enters **yes or Yes or YES**; main welcome page will be getting popped out
   * Any other inputs will lead application to its' closing state.
-  
+  # Scrrenshots of the application flow
+  * Welcome Screen:
+  ![Welcome Screen](https://user-images.githubusercontent.com/52070898/109428115-90625080-7a1b-11eb-95c8-ffc576626334.png)
+  * Listing The Files present in Vault:
+  ![image](https://user-images.githubusercontent.com/52070898/109428214-18485a80-7a1c-11eb-829f-650f59b80402.png)
+  * Adding .txt file in the vault:
+  ![image](https://user-images.githubusercontent.com/52070898/109428351-d1a73000-7a1c-11eb-95ba-280e2f5a3491.png)
+  * Searching for a specific .txt file from the vault:
+  ![image](https://user-images.githubusercontent.com/52070898/109428382-f6030c80-7a1c-11eb-8ab9-f8d481eceac3.png)
+  * Removing a specific .txt file from the vault:
+  ![image](https://user-images.githubusercontent.com/52070898/109428423-1a5ee900-7a1d-11eb-8915-dfb0d2005a4b.png)
