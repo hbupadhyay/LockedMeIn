@@ -6,7 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class CreateFileToTheVault {
+import com.lockedmein.filehandling.interfaces.ShowOptionWizardInterface;
+
+public class CreateFileToTheVault implements ShowOptionWizardInterface{
 	
 	private static Scanner sc;
 

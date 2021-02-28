@@ -20,7 +20,8 @@ public class WelcomePage {
 				+ "\n\tSelect 1 for Listing the Files present in the File List"
 				+ "\n\tSelect 2 for Adding a file in the File List"
 				+ "\n\tSelect 3 for Searching file with the matched name from the File List"
-				+ "\n\tSelect 4 for Deleting file with the matched name from the File List\n");
+				+ "\n\tSelect 4 for Deleting file with the matched name from the File List"
+				+ "\n\tSelect 5 for terminating the application\n");
 		
 		sc = new Scanner(System.in);
 		System.out.print("Please select which operation you would like to perform: ");
@@ -38,7 +39,7 @@ public class WelcomePage {
 		
 			case 1:
 				System.out.println("\nWelcome to the File Listing wizard!\n");
-				List<String> fileList = new ListExistingFiles().getListType();
+				List<String> fileList = new ListExistingFiles().showOptionWizard();
 				//System.out.println("Files currently present in the directory are " + fileList.toString());
 				if(fileList.size() == 0)
 					System.out.println("Currently No Files are present in the directory.");
@@ -93,6 +94,12 @@ public class WelcomePage {
 					System.out.println("Thanks for using the application. Hope to see you soon!");
 					System.exit(0);
 				}
+				break;
+				
+			case 5:
+				
+				System.out.println("Thanks for using the application. Hope to see you soon!");
+				System.exit(0);
 				break;
 			
 			default:

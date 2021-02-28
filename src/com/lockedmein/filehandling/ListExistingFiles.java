@@ -18,7 +18,7 @@ public class ListExistingFiles {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<String> getListType(){
+	public List<String> showOptionWizard(){
 		
 		System.out.print("Please enter 1 if you want to list files without any specific extension: ");
 		System.out.print("\nPlease enter 2 if you want to list files with the specific extension: ");
@@ -49,7 +49,7 @@ public class ListExistingFiles {
 			
 			default:
 				System.out.println("\nInvalid selection done. Redirecting to the file selection wizard...");
-				this.getListType();
+				this.showOptionWizard();
 				break;
 		}
 		return filesToReturn;

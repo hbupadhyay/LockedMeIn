@@ -3,7 +3,9 @@ package com.lockedmein.filehandling;
 import java.util.List;
 import java.util.Scanner;
 
-public class SearchForFiles {
+import com.lockedmein.filehandling.interfaces.ShowOptionWizardInterface;
+
+public class SearchForFiles implements ShowOptionWizardInterface{
 	
 	private static Scanner sc;
 

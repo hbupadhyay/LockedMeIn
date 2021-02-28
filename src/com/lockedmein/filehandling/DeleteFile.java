@@ -5,7 +5,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class DeleteFile {
+import com.lockedmein.filehandling.interfaces.ShowOptionWizardInterface;
+
+public class DeleteFile implements ShowOptionWizardInterface{
 	
 	private static Scanner sc;
 
